@@ -1,8 +1,8 @@
 class UI {
   constructor() {
     this.post = document.querySelector('#posts')
-    this.title = document.querySelector('#title')
-    this.body = document.querySelector('#body')
+    this.titleInput = document.querySelector('#title')
+    this.bodyInput = document.querySelector('#body')
     this.idInput = document.querySelector('#id')
     this.postSubmit = document.querySelector('.post-submit')
     this.formState = 'add'
@@ -29,6 +29,32 @@ class UI {
     })
 
     this.post.innerHTML = output
+  }
+  showAlert(message, className) {
+    this.clearAlert()
+
+    const container = document.querySelector('.postsContainer')
+    const div = document.createElement('div')
+    const posts = document.querySelector('#posts')
+
+    div.className = className
+    div.appendChild(document.createTextNode(message))
+    container.insertBefore(div, posts)
+
+    setTimeout(() => {
+      this.clearAlert()
+    }, 2000)
+  }
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert')
+
+    if(currentAlert) {
+      currentAlert.remove()
+    }
+  }
+  clearFields() {
+    this.titleInput.value = ''
+    this.bodyInput.value = ''
   }
 }
 

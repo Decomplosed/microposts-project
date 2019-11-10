@@ -91,7 +91,7 @@ class UI {
       this.postSubmit.className = 'post-submit btn btn-primary btn-block'
       
       if(document.querySelector('.post-cancel')) {
-        document.querySelector('post-cancel').remove()
+        document.querySelector('.post-cancel').remove()
       }
 
       this.clearIdInput()

@@ -23,7 +23,6 @@ function submitPost() {
   const body = document.querySelector('#body').value
 
   const data = {
-    id,
     title,
     body
   }

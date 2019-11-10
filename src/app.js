@@ -7,6 +7,8 @@ document.querySelector('.post-submit').addEventListener('click', submitPost)
 
 document.querySelector('#posts').addEventListener('click', deletePost)
 
+document.querySelector('#posts').addEventListener('click', enableEdit)
+
 function getPosts() {
   http.get('http://localhost:3000/posts')
     .then(data => ui.showPosts(data))
@@ -32,7 +34,6 @@ function submitPost() {
 }
 
 function deletePost(e) {
-  e.preventDefault()
 
   if(e.target.parentElement.classList.contains('delete')) {
     const id = e.target.parentElement.dataset.id
@@ -46,4 +47,25 @@ function deletePost(e) {
         .catch(err => console.log(err))
     }
   }
+
+  e.preventDefault()
+}
+
+function enableEdit(e) {
+
+  if(e.target.parentElement.classList.contains('edit')) {
+    const id = e.target.parentElement.dataset.id
+    const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent
+    const body = e.target.parentElement.previousElementSibling.textContent
+
+    const data = {
+      id,
+      title,
+      body
+    }
+
+    ui.fillForm(data)
+  }
+
+  e.preventDefault()
 }

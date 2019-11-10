@@ -30,6 +30,7 @@ class UI {
 
     this.post.innerHTML = output
   }
+
   showAlert(message, className) {
     this.clearAlert()
 
@@ -45,6 +46,7 @@ class UI {
       this.clearAlert()
     }, 2000)
   }
+
   clearAlert() {
     const currentAlert = document.querySelector('.alert')
 
@@ -52,9 +54,16 @@ class UI {
       currentAlert.remove()
     }
   }
+
   clearFields() {
     this.titleInput.value = ''
     this.bodyInput.value = ''
+  }
+
+  fillForm(data) {
+    this.titleInput.value = data.title
+    this.bodyInput.value = data.body
+    this.idInput.value = data.id
   }
 }
 
